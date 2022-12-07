@@ -12,7 +12,17 @@
 
   &__logo {
     display: flex;
+    justify-content: center;
+    align-items: center;
   }
+
+  &__name {
+    font-weight: 900;
+    font-size: 1.714285rem;
+    color: #1D5BA2;
+    margin-left: 0.5em;
+  }
+  
 }
 
 .profile {
@@ -26,7 +36,7 @@
     justify-content: center;
     text-transform: capitalize;
 
-    font-weight: 700;
+    font-weight: 900;
     font-size: 30px;
     line-height: 36px;
     color: #ffffff;
