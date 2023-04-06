@@ -17,7 +17,7 @@
         url("../assets/fonts/SFUIDisplay-Medium.woff2") format("woff2"),
         url("../assets/fonts/SFUIDisplay-Medium.woff") format("woff"),
         url("../assets/fonts/SFUIDisplay-Medium.ttf") format("truetype");
-    font-weight: 500;
+    font-weight: 600;
     font-style: normal;
     font-display: swap;
 }
@@ -44,6 +44,29 @@
     font-display: swap;
 }
 
+@font-face {
+    font-family: "SF UI";
+    src: local("San Francisco(SF UI) Display Bold"), local("San-Francisco(SF-UI)-Display-Bold"),
+        url("../assets/fonts/SFUIDisplay-Bold.woff2") format("woff2"),
+        url("../assets/fonts/SFUIDisplay-Bold.woff") format("woff"),
+        url("../assets/fonts/SFUIDisplay-Bold.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "SF UI";
+    src: local("San Francisco(SF UI) Display Regular"), local("San-Francisco(SF-UI)-Display-Regular"),
+        url("../assets/fonts/SFUIDisplay-Regular.woff2") format("woff2"),
+        url("../assets/fonts/SFUIDisplay-Regular.woff") format("woff"),
+        url("../assets/fonts/SFUIDisplay-Regular.ttf") format("truetype");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+
 
 *{
     margin: 0;
@@ -53,7 +76,7 @@
 
 
 html, body {
-    background-color: #F1F4F7;
+    background-color: #F3F3F3;
     font-family: SF UI, BlinkMacSystemFont, sans-serif;
     font-size: 14px;
     color: #373737;

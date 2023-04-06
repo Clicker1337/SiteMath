@@ -1,0 +1,26 @@
+.wrapper {
+    display: flex;
+    column-gap: 10px;
+}
+
+.inputa {
+  color: #373737;
+  background-color: #dcdcdc;
+  min-height: 35px;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 0.375rem 0.75rem;
+
+  border-radius: 5px;
+  border: #373737;
+
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.inputa:focus {
+  color: #212529;
+  background-color: #fff;
+  border-color: #dcdcdc;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(158, 158, 158, 0.25);
+}
