@@ -8,6 +8,4 @@ export default class BackendApi {
     static REFRESH = "/api/auth/refresh";
   
     static LOGOUT = "/api/auth/logout";
-  
-    static FETCH_LISTS = "/api/lists";
   }

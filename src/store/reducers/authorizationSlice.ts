@@ -7,6 +7,9 @@ const initialState: IAuthorizationState = {
     loading: false,
     error: "",
     isAuthorized: false,
+    admin: false,
+    prepod: false,
+    student: false,
     user: {} as IUser,
   };
   
@@ -50,10 +53,31 @@ const initialState: IAuthorizationState = {
         state.loading = true;
         state.error = "";
       },
-      loginSuccess: (state, action: PayloadAction<IUser>) => {
+      studentLoginSuccess: (state, action: PayloadAction<IUser>) => {
         state.loading = false;
         state.error = "";
         state.isAuthorized = true;
+        state.student = true;
+        state.prepod = false;
+        state.admin = false;
+        state.user = action.payload;
+      },
+      prepodLoginSuccess: (state, action: PayloadAction<IUser>) => {
+        state.loading = false;
+        state.error = "";
+        state.isAuthorized = true;
+        state.student = false;
+        state.prepod = true;
+        state.admin = false;
+        state.user = action.payload;
+      },
+      adminLoginSuccess: (state, action: PayloadAction<IUser>) => {
+        state.loading = false;
+        state.error = "";
+        state.isAuthorized = true;
+        state.student = false;
+        state.prepod = false;
+        state.admin = true;
         state.user = action.payload;
       },
       loginError: (state, action: PayloadAction<string>) => {

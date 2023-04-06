@@ -4,4 +4,5 @@ export interface IUser {
   email: userDataField;
   id?: userDataField;
   password?: userDataField;
+  role?: userDataField;
 }

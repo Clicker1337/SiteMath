@@ -4,9 +4,6 @@ import { IUser } from "../models/IUser";
 export interface IFetchLogin {
   type: AuthorizationActionTypes.FETCH_LOGIN;
 }
-export interface IFetchRegistration {
-  type: AuthorizationActionTypes.FETCH_REGISTRATION;
-}
 export interface IFetchRefresh {
   type: AuthorizationActionTypes.FETCH_REFRESH;
 }

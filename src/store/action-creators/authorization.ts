@@ -8,28 +8,6 @@ import { AuthResponse } from "../../types/interfaces/Authorization";
 import { $api } from "../http";
 import AuthorizationSlice from "../reducers/authorizationSlice";
 
-export const registration =
-  (email: string, password: string) => async (dispatch: AppDispatch) => {
-    try {
-      dispatch(AuthorizationSlice.actions.registration());
-      const response = await axios.post(
-        BackendApi.LOCATION + BackendApi.REGISTRATION,
-        {
-          email: email,
-          password: password,
-        },
-      );
-
-      dispatch(
-        AuthorizationSlice.actions.registrationSuccess(response.data.user),
-      );
-    } catch (error) {
-      dispatch(
-        AuthorizationSlice.actions.refreshError(ErrorMessages.REGISTRATION),
-      );
-    }
-  };
-
 export const login =
   (email: string, password: string) => async (dispatch: AppDispatch) => {
     try {
@@ -40,7 +18,15 @@ export const login =
       });
       localStorageApi.setAccessToken(response.data.accessToken);
 
-      dispatch(AuthorizationSlice.actions.loginSuccess(response.data.user));
+      if (response.data.user.role === "student") {
+        dispatch(AuthorizationSlice.actions.studentLoginSuccess(response.data.user));
+      }
+      if (response.data.user.role === "prepod") {
+        dispatch(AuthorizationSlice.actions.prepodLoginSuccess(response.data.user));
+      }
+      if (response.data.user.role === "admin") {
+        dispatch(AuthorizationSlice.actions.adminLoginSuccess(response.data.user));
+      }
     } catch (error) {
       dispatch(AuthorizationSlice.actions.loginError(ErrorMessages.LOGIN));
     }
@@ -56,7 +42,7 @@ export const refresh = () => async (dispatch: AppDispatch) => {
       },
       {
         withCredentials: true,
-      },
+      }
     );
 
     if (!response.data) throw new Error(ErrorMessages.REFRESH_NOT_VALID);
@@ -69,7 +55,7 @@ export const refresh = () => async (dispatch: AppDispatch) => {
       dispatch(AuthorizationSlice.actions.refreshError(error.message));
 
     dispatch(
-      AuthorizationSlice.actions.registrationError(ErrorMessages.REFRESH),
+      AuthorizationSlice.actions.registrationError(ErrorMessages.REFRESH)
     );
   }
 };
@@ -86,4 +72,4 @@ export const logout = () => async (dispatch: AppDispatch) => {
   }
 };
 
-export type AuthorizationType = typeof login | typeof registration;
+export type AuthorizationType = typeof login;
