@@ -1,61 +1,133 @@
-import { FC } from "react";
-import { Route, Routes } from "react-router-dom";
+import React from 'react';
+import {Route, Routes} from 'react-router-dom';
 
-import { useTypedSelector } from "../../hooks/useTypedSelector";
-import { privateRoutes, publicRoutes } from "../../router";
+import {useTypedSelector} from '../../hooks/useTypedSelector';
+import {
+    publicRoutes,
+    adminRoutes,
+    prepodRoutes,
+    studentRoutes,
+} from '../../router';
 
 interface IAppRouter {
   developing?: boolean;
 }
 
-const AppRouter: FC<IAppRouter> = ({ developing = false }) => {
-  const { isAuthorized } = useTypedSelector((state) => state.authorization);
+function AppRouter(props: IAppRouter) {
+    const {admin} = useTypedSelector((state) => state.authorization);
+    const {prepod} = useTypedSelector((state) => state.authorization);
+    const {student} = useTypedSelector((state) => state.authorization);
 
-  if (developing)
-    return (
-      <Routes>
-        {privateRoutes.map((route) => (
-          <Route
-            key={route.id}
-            path={route.path}
-            element={route.component}
-          ></Route>
-        ))}
-        {publicRoutes.map((route) => (
-          <Route
-            key={route.id}
-            path={route.path}
-            element={route.component}
-          ></Route>
-        ))}
-      </Routes>
-    );
+    switch (true) {
+        case props.developing:
+            return (
+                <Routes>
+                    {adminRoutes.map((route) => (
+                        <Route
+                            key={route.id}
+                            path={route.path}
+                            element={route.component}
+                        />
+                    ))}
+                    {studentRoutes.map((route) => (
+                        <Route
+                            key={route.id}
+                            path={route.path}
+                            element={route.component}
+                        />
+                    ))}
+                    {prepodRoutes.map((route) => (
+                        <Route
+                            key={route.id}
+                            path={route.path}
+                            element={route.component}
+                        />
+                    ))}
+                    {publicRoutes.map((route) => (
+                        <Route
+                            key={route.id}
+                            path={route.path}
+                            element={route.component}
+                        />
+                    ))}
+                </Routes>
+            );
 
-  return (
-    <div>
-      {isAuthorized ? (
-        <Routes>
-          {privateRoutes.map((route) => (
-            <Route
-              key={route.id}
-              path={route.path}
-              element={route.component}
-            ></Route>
-          ))}
-        </Routes>
-      ) : (
-        <Routes>
-          {publicRoutes.map((route) => (
-            <Route
-              key={route.id}
-              path={route.path}
-              element={route.component}
-            ></Route>
-          ))}
-        </Routes>
-      )}
-    </div>
-  );
-};
+        case admin:
+            return (
+                <Routes>
+                    {adminRoutes.map((route) => (
+                        <Route
+                            key={route.id}
+                            path={route.path}
+                            element={route.component}
+                        />
+                    ))}
+                    {publicRoutes.map((route) => (
+                        <Route
+                            key={route.id}
+                            path={route.path}
+                            element={route.component}
+                        />
+                    ))}
+                </Routes>
+            );
+
+        case student:
+            return (
+                <Routes>
+                    {studentRoutes.map((route) => (
+                        <Route
+                            key={route.id}
+                            path={route.path}
+                            element={route.component}
+                        />
+                    ))}
+                    {publicRoutes.map((route) => (
+                        <Route
+                            key={route.id}
+                            path={route.path}
+                            element={route.component}
+                        />
+                    ))}
+                </Routes>
+            );
+
+        case prepod:
+            return (
+                <Routes>
+                    {prepodRoutes.map((route) => (
+                        <Route
+                            key={route.id}
+                            path={route.path}
+                            element={route.component}
+                        />
+                    ))}
+                    {publicRoutes.map((route) => (
+                        <Route
+                            key={route.id}
+                            path={route.path}
+                            element={route.component}
+                        />
+                    ))}
+                </Routes>
+            );
+
+        default:
+            return (
+                <div>
+                    <Routes>
+                        {publicRoutes.map((route) => (
+                            <Route
+                                key={route.id}
+                                path={route.path}
+                                element={route.component}
+                            />
+                        ))}
+                    </Routes>
+                </div>
+            );
+    }
+}
 
 export default AppRouter;

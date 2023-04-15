@@ -1,10 +1,10 @@
-import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
+import {configureStore} from '@reduxjs/toolkit';
 
-import { rootReducer } from "./reducers";
+import {rootReducer} from './reducers';
 
 export const store = configureStore({
-  reducer: rootReducer,
+    reducer: rootReducer,
 });
 
 export type AppStore = typeof store;
-export type AppDispatch = AppStore["dispatch"];
+export type AppDispatch = AppStore['dispatch'];

@@ -1,5 +1,5 @@
-import { AuthorizationActionTypes } from "../enums/AuthorizationActionTypes";
-import { IUser } from "../models/IUser";
+import {AuthorizationActionTypes} from '../enums/AuthorizationActionTypes';
+import {IUser} from '../models/IUser';
 
 export interface IFetchLogin {
   type: AuthorizationActionTypes.FETCH_LOGIN;

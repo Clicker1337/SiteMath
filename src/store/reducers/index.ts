@@ -1,10 +1,12 @@
-import { combineReducers } from "redux";
+import {combineReducers} from 'redux';
 
-import authorization from "./authorizationSlice";
+import authorization from './authorizationSlice';
+import dropDown from './dropDownSlice';
 
 export const rootReducer = combineReducers({
 
-	authorization: authorization.reducer,
+    authorization: authorization.reducer,
+    dropDown: dropDown.reducer,
 
 });
 

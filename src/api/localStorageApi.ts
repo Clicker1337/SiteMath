@@ -1,15 +1,17 @@
 export class localStorageApi {
     static setAccessToken(token: string) {
-      localStorage.setItem("token", token);
+        localStorage.setItem('token', token);
     }
-  
+
     static removeAccessToken() {
-      localStorage.removeItem("token");
+        localStorage.removeItem('token');
     }
-  
+
     static isTokenExist() {
-      if (!localStorage.getItem("token")) return false;
-  
-      return true;
+        if (!localStorage.getItem('token')) {
+            return false;
+        }
+
+        return true;
     }
-  }
+}

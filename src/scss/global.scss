@@ -1,5 +1,9 @@
 @import-normalize;
 
+button {
+    font-family: inherit;
+}
+
 @font-face {
     font-family: "SF UI";
     src: local("San Francisco(SF UI) Display Heavy"), local("San-Francisco(SF-UI)-Display-Heavy"),

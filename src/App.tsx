@@ -1,18 +1,15 @@
-import { FC, useEffect } from "react";
+import AppRouter from './components/utils/AppRouter';
+import {useActions} from './hooks/useActions';
 
-import { localStorageApi } from "./api/localStorageApi";
-import AppRouter from "./components/utils/AppRouter";
-import { useActions } from "./hooks/useActions";
+function App() {
+    const isDev = true;
+    const {refresh} = useActions();
 
-const App: FC = () => {
-	const isDev = true;
-	const { refresh } = useActions();
+    //useEffect(() => {
+    //if (localStorageApi.isTokenExist()) refresh();
+    //}, [refresh]);
 
-	useEffect(() => {
-		if (localStorageApi.isTokenExist()) refresh();
-	}, [refresh]);
-
-	return <AppRouter developing={isDev}></AppRouter>;
-};
+    return <AppRouter developing={isDev} />;
+}
 
 export default App;

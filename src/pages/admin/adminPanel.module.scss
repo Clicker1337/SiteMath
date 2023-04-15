@@ -1,0 +1,30 @@
+.container {
+    background-color: white;
+    width: 559px;
+    min-height: 816px;
+    border-radius: 15px 0px 0px 15px;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
+    margin: 15px 0px 0px 0px;
+
+    &__header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        padding: 20px 20px 0px 20px;
+
+        &__title {
+            font-size: 24px;
+            font-weight: 700;
+        }
+    }
+
+    &__form {
+        padding: 19px 20px 0px 20px;
+        width: 450px;
+    }
+
+    &__DropDown {
+        width: 175px;
+    }
+}

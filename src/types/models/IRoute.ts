@@ -1,5 +1,7 @@
+import React from 'react';
+
 export interface IRoute {
     id: number;
     path: string;
-    component: JSX.Element;
+    component: React.ReactElement;
   }

@@ -1,8 +1,15 @@
-import { userDataField } from "../userDataField";
+import {userDataField} from '../userDataField';
 
 export interface IUser {
-  email: userDataField;
-  id?: userDataField;
+    login: userDataField;
+    userId?: userDataField;
   password?: userDataField;
-  role?: userDataField;
+    roles: Iroles[];
+    patronymic?: userDataField;
+    nameUser?: userDataField;
+    surname?: userDataField;
+}
+interface Iroles {
+    roleId: number;
+    name: string;
 }

@@ -1,0 +1,75 @@
+.DropDown {
+  $root: &;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 400;
+  margin: 0px 0px 20px 0px;
+  width: 100%;
+  position: relative;
+
+  &__header {
+    position: relative;
+    border-radius: 5px;
+    background-color: #dcdcdc;
+    padding: 8px 8px;
+    height: 35px;
+    margin-bottom: 5px;
+
+    cursor: pointer;
+
+    transition: background-color 50ms ease-in-out;
+
+    &:hover {
+      background-color: rgba(gray, 0.4);
+    }
+
+    &::after {
+      display: inline-block;
+      background-image: url("../../../assets/images/CHEVRON.svg");
+      content: "";
+      height: 30px;
+      width: 30px;
+      position: absolute;
+      top: 50%;
+      right: 8px;
+      transform: translateY(-50%);
+
+      transition: transform 200ms ease-in-out;
+    }
+  }
+
+  &__content {
+    position: absolute;
+    display: flex;
+    flex-flow: column nowrap;
+    max-height: 0px;
+    text-align: left;
+    overflow: hidden;
+    background-color: #dcdcdc;
+    border-radius: 5px;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.4);
+    width: 100%;
+    transition: max-height 150ms cubic-bezier(1, -0.04, 1, -0.1);
+
+    &_item {
+      cursor: pointer;
+      padding: 10px 16px;
+      transition: background-color 50ms ease-in-out;
+
+      &:hover {
+        background-color: #9fc53a;
+      }
+    }
+  }
+
+  &_opened {
+    #{$root}__content {
+      max-height: 1000px;
+    }
+    #{$root}__header {
+      &::after {
+        transform: rotate(180deg) translateY(50%);
+      }
+    }
+  }
+}

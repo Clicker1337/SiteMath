@@ -1,0 +1,18 @@
+.button {
+  width: 300px;
+  height: 35px;
+  border: none;
+  background: #3C388D;
+  border-radius: 5px;
+
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.button:hover {
+  background-color: #5551b4;
+}
+.button:focus {
+  background-color: #2d2a6d;
+}

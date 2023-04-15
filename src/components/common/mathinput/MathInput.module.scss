@@ -3,7 +3,7 @@
     column-gap: 10px;
 }
 
-.inputa {
+.input {
   color: #373737;
   background-color: #dcdcdc;
   min-height: 35px;
@@ -17,7 +17,7 @@
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-.inputa:focus {
+.input:focus {
   color: #212529;
   background-color: #fff;
   border-color: #dcdcdc;
