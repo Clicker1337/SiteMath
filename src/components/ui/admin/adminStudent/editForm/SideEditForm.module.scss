@@ -1,0 +1,29 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    align-content: flex-end;
+    align-items: flex-end;
+    width: 611px;
+    background-color: #DCDCDC;
+    min-height: 816px;
+    
+    border-radius: 0px 15px 15px 0px;
+
+    &__title {
+      font-weight: 600;
+      font-size: 24px;
+      line-height: 24px;
+  
+      margin: 20px 25px 0px 0px;
+    }
+
+    &__info {
+        font-weight: 600;
+        font-size: 16px;
+        text-align: end;
+        margin: 15px 25px 0px 0px;
+        display: grid;
+        gap: 10px;
+    }
+  }
+  

@@ -9,7 +9,15 @@ export default class BackendApi {
 
     static LOGOUT = '/api/auth/logout';
 
-    static GETGROUPS = '/api/request/groups';
+    static GET_GROUPS = '/api/request/groups';
 
-    static ADDSTUDENT = '/api/admin/createStudent';
+    static ADD_STUDENT = '/api/admin/createStudent';
+
+    static GET_STUDENT_INFO = '';
+
+    static GET_STUDENTS_IN_GROUP = '';
+
+    static EDIT_STUDENT = '/api/admin/editStudent';
+
+    static DELETE_USER = '/api/admin/delUser';
 }

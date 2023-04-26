@@ -21,7 +21,7 @@ button {
         url("../assets/fonts/SFUIDisplay-Medium.woff2") format("woff2"),
         url("../assets/fonts/SFUIDisplay-Medium.woff") format("woff"),
         url("../assets/fonts/SFUIDisplay-Medium.ttf") format("truetype");
-    font-weight: 600;
+    font-weight: 500;
     font-style: normal;
     font-display: swap;
 }
@@ -36,6 +36,18 @@ button {
     font-style: normal;
     font-display: swap;
 }
+
+@font-face {
+    font-family: "SF UI";
+    src: local("San Francisco(SF UI) Display Semibold"), local("San-Francisco(SF-UI)-Display-Semibold"),
+        url("../assets/fonts/SFUIDisplay-Semibold.woff2") format("woff2"),
+        url("../assets/fonts/SFUIDisplay-Semibold.woff") format("woff"),
+        url("../assets/fonts/SFUIDisplay-Semibold.ttf") format("truetype");
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
 
 @font-face {
     font-family: "SF UI";
@@ -65,7 +77,7 @@ button {
         url("../assets/fonts/SFUIDisplay-Regular.woff2") format("woff2"),
         url("../assets/fonts/SFUIDisplay-Regular.woff") format("woff"),
         url("../assets/fonts/SFUIDisplay-Regular.ttf") format("truetype");
-    font-weight: 500;
+    font-weight: 400;
     font-style: normal;
     font-display: swap;
 }

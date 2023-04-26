@@ -3,6 +3,7 @@
 import React, {SyntheticEvent, useState} from 'react';
 import clsx from 'clsx';
 import s from './DropDown.module.scss';
+import {useTypedSelector} from '../../../hooks/useTypedSelector';
 
 interface IDropDownProps {
     callback?: (args: any) => void;
@@ -11,15 +12,34 @@ interface IDropDownProps {
     title?: string;
     className?: string;
     items: {
-        idGroup: number;
-        numGroup: string;
+        id: number;
+        label: string;
     }[];
 }
 
 function DropDown(props: IDropDownProps) {
     const [isOpened, setIsOpened] = useState(false);
+    const {addOption} = useTypedSelector((state) => state.dropDown);
+    const {editOption} = useTypedSelector((state) => state.dropDown);
+    const {removeOption} = useTypedSelector((state) => state.dropDown);
+
+    let typeOfLabel = 0;
+    switch (true) {
+        case addOption:
+            typeOfLabel = 0;
+            break;
+        case editOption:
+            typeOfLabel = 1;
+            break;
+        case removeOption:
+            typeOfLabel = 2;
+            break;
+
+        default: break;
+    }
+
     const [selectedItem, setSelectedItem] = useState<string>(
-        props.placeholder ? '' : props.items[0].numGroup,
+        props.placeholder ? '' : props.items[typeOfLabel].label,
     );
 
     const onClickHandler = (e: SyntheticEvent): void => {
@@ -32,7 +52,7 @@ function DropDown(props: IDropDownProps) {
     const onClickItemHandler = (e: React.MouseEvent) => {
         const target = e.target as HTMLDivElement;
 
-        if (!target.dataset.numGroup) {
+        if (!target.dataset.id) {
             return;
         }
 
@@ -40,7 +60,7 @@ function DropDown(props: IDropDownProps) {
         setIsOpened(false);
 
         if (props.callback) {
-            props.callback(target.dataset.id);
+            props.callback(Number(target.dataset.id));
         }
     };
 
@@ -67,9 +87,10 @@ function DropDown(props: IDropDownProps) {
                     <div
                         className={clsx(s.DropDown__content_item)}
                         key={itemIndex}
-                        data-id={item.idGroup}
+                        data-id={item.id}
+                        data-label={item.label}
                     >
-                        {item.numGroup}
+                        {item.label}
                     </div>
                 ))}
             </div>

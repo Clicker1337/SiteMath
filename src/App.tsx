@@ -1,3 +1,5 @@
+// import {useEffect} from 'react';
+// import {localStorageApi} from './api/localStorageApi';
 import AppRouter from './components/utils/AppRouter';
 import {useActions} from './hooks/useActions';
 
@@ -5,9 +7,11 @@ function App() {
     const isDev = true;
     const {refresh} = useActions();
 
-    //useEffect(() => {
-    //if (localStorageApi.isTokenExist()) refresh();
-    //}, [refresh]);
+    // useEffect(() => {
+    //     if (localStorageApi.isTokenExist()) {
+    //         refresh();
+    //     }
+    // }, [refresh]);
 
     return <AppRouter developing={isDev} />;
 }

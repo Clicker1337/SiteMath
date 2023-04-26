@@ -1,0 +1,43 @@
+import s from './SideEditForm.module.scss';
+
+interface ISideEditForm {
+    //callback?: (args: any) => void;
+    items: {
+        disciplines: {
+            id: number;
+            label: string;
+        }[];
+        groups: {
+            id: number;
+            label: string;
+        }[];
+        name: string;
+        surname: string;
+        patronomic: string;
+    };
+}
+
+export function SideEditForm(items: ISideEditForm) {
+    return (
+        <div>
+            <form className={s.form}>
+                <h2 className={s.form__title}>
+                    Информация о дисциплине
+                    <span>:</span>
+                </h2>
+                <section className={s.form__info}>
+                    <div>
+                        Дисциплины:
+                        {items.items.disciplines.map((prop, itemIndex) => (
+                            <span
+                                key={itemIndex}
+                            >
+                                {' ' + prop.label}
+                            </span>
+                        ))}
+                    </div>
+                </section>
+            </form>
+        </div>
+    );
+}

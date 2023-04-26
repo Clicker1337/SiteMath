@@ -1,29 +1,28 @@
 import {AppDispatch} from '..';
+import {dropDownIdOption} from '../../types/enums/dropDownOptions';
 
 import dropDownSlice from '../reducers/dropDownSlice';
 
-import {dropDownOptions} from '../../types/enums/dropDownOptions';
-
-export const option = (label: string) => async (dispatch: AppDispatch) => {
-    switch (label) {
-        case dropDownOptions.ADD_OPTION:
+export const option = (id: any) => async (dispatch: AppDispatch) => {
+    switch (id) {
+        case dropDownIdOption.ADD:
             dispatch(
                 dropDownSlice.actions.addOptionActive(),
             );
             break;
-        case dropDownOptions.EDIT_OPTION:
+        case dropDownIdOption.EDIT:
             dispatch(
                 dropDownSlice.actions.editOptionActive(),
             );
             break;
-        case dropDownOptions.REMOVE_OPTION:
+        case dropDownIdOption.REMOVE:
             dispatch(
                 dropDownSlice.actions.removeOptionActive(),
             );
             break;
 
         default:
-            alert('Не выбрана опция');
+            alert(id);
     }
 };
 

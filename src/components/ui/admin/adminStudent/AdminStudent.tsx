@@ -1,7 +1,11 @@
 import React from 'react';
 import {RootState} from '../../../../store/reducers';
 import {useTypedSelector} from '../../../../hooks/useTypedSelector';
-import {StudentForm} from './form/StudentForm';
+import {StudentForm} from './addForm/StudentForm';
+
+import s from './AdminStudent.module.scss';
+import {StudentEditForm} from './editForm/StudentEditForm';
+import {StudentRemoveForm} from './removeForm/StudentRemoveForm';
 
 function AdminStudent() {
     const selectDropDown = (state: RootState) => state.dropDown;
@@ -13,20 +17,20 @@ function AdminStudent() {
     switch (true) {
         case addOption:
             return (
-                <div>
+                <div className={s.container}>
                     <StudentForm />
                 </div>
             );
         case editOption:
             return (
-                <div>
-                    РЕДАКТИРУЕМ СТУДЕНТОВ
+                <div className={s.container}>
+                    <StudentEditForm />
                 </div>
             );
         case removeOption:
             return (
-                <div>
-                    УДАЛЯЕМ СТУДЕНТОВ
+                <div className={s.container}>
+                    <StudentRemoveForm />
                 </div>
             );
         default:

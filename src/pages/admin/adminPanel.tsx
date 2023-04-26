@@ -5,22 +5,22 @@ import AdminStudent from '../../components/ui/admin/adminStudent/AdminStudent';
 
 import NavigationPanel from '../../components/ui/admin/navigationPanel/NavigationPanel';
 import {useActions} from '../../hooks/useActions';
-import {dropDownOptions} from '../../types/enums/dropDownOptions';
+import {dropDownIdOption, dropDownOptions} from '../../types/enums/dropDownOptions';
 
 import s from './adminPanel.module.scss';
 
 const items = [
     {
-        idGroup: 1,
-        numGroup: dropDownOptions.ADD_OPTION,
+        id: dropDownIdOption.ADD,
+        label: dropDownOptions.ADD_OPTION,
     },
     {
-        idGroup: 2,
-        numGroup: dropDownOptions.EDIT_OPTION,
+        id: dropDownIdOption.EDIT,
+        label: dropDownOptions.EDIT_OPTION,
     },
     {
-        idGroup: 3,
-        numGroup: dropDownOptions.REMOVE_OPTION,
+        id: dropDownIdOption.REMOVE,
+        label: dropDownOptions.REMOVE_OPTION,
     },
 ];
 

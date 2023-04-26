@@ -3,28 +3,28 @@ import {useRequest} from '../../../../../hooks/useRequest';
 import Button from '../../../../common/button/button';
 import DropDown from '../../../../common/dropDown/DropDown';
 import Input from '../../../../common/input/input';
-import s from './StudentForm.module.scss';
+import s from './PrepodForm.module.scss';
 import GroupService from '../../../../../services/GroupService';
 import StudentService, {IStudent} from '../../../../../services/StudentService';
+import {SideForm} from './SideForm';
 
 interface IGroup {
     idGroup: number;
     numGroup: string;
 }
 
-export function StudentForm() {
+export function PrepodForm() {
     const [name, setName] = useState('');
     const [lastName, setLastName] = useState('');
     const [middleName, setMiddleName] = useState('');
-    const [idGroup, setIdGroup] = useState(0);
+    const [idDiscipline, setIdDiscipline] = useState(0);
 
     const groupsRequest = useRequest<IGroup[]>(GroupService.fetchGroups);
-    const studentRequest = useRequest<IStudent>(StudentService.fetchStudent);
+    const studentRequest = useRequest<IStudent>(StudentService.fetchAddStudent);
 
     const onButtonClickHandler = (e: SyntheticEvent): void => {
         e.preventDefault();
-        studentRequest.send(idGroup, name, lastName, middleName);
-        //console.log(studentRequest.error);
+        studentRequest.send(idDiscipline, name, lastName, middleName);
     };
 
     const onDropDownClick = () => {
@@ -34,14 +34,14 @@ export function StudentForm() {
     useEffect(() => {
         //console.log(groupsRequest.loading);
     }, [groupsRequest]);
-
+    //groupsRequest.data для выгрузки в dropDown
     return (
-        <div>
+        <div className={s.container}>
             <form className={s.form}>
-                <h2 className={s.form__title}>Добавить одного студента</h2>
+                <h2 className={s.form__title}>Добавить одного преподавателя</h2>
                 <Input
                     id="name"
-                    placeholder="Введите имя студента"
+                    placeholder="Введите имя преподавателя"
                     title="Имя"
                     typeInput="text"
                     value={name}
@@ -49,7 +49,7 @@ export function StudentForm() {
                 />
                 <Input
                     id="lastName"
-                    placeholder="Введите фамилию студента"
+                    placeholder="Введите фамилию преподавателя"
                     title="Фамилия"
                     typeInput="text"
                     value={lastName}
@@ -57,24 +57,26 @@ export function StudentForm() {
                 />
                 <Input
                     id="middleName"
-                    placeholder="Введите отчество студента"
+                    placeholder="Введите отчество преподавателя"
                     title="Отчество"
                     typeInput="text"
                     value={middleName}
                     onChangeValue={setMiddleName}
                 />
                 <DropDown
-                    callback={setIdGroup}
+                    callback={setIdDiscipline}
                     onOpen={onDropDownClick}
-                    items={groupsRequest.data || []}
-                    title="Группа"
-                    placeholder="Выберите группу"
+                    items={[]}
+                    title="Дисциплины"
+                    placeholder="Выберите дисциплину"
                 />
                 <Button
                     text="ДОБАВИТЬ"
                     callback={onButtonClickHandler}
                 />
+
             </form>
+            <SideForm />
         </div>
     );
 }
